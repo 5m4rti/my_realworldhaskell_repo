@@ -45,7 +45,6 @@ mul m n =
       newCols = columns n
       valueIndices =
         concatMap (\r -> [(r, c) | c <- [1 .. newCols]]) [1 .. newRows]
+      matrixValue (r, c) = sum $ zipWith (*) (row m r) (col n c)
   in Matrix
-     {values = map matrixValue valueIndices, rows = newRows, columns = newCols}
-  where
-    matrixValue (r, c) = sum $ zipWith (*) (row m r) (col n c)
+     {values = map matrixValue valueIndices, rows = newRows, columns = newCols}    
